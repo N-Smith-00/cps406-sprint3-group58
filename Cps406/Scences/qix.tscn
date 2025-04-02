@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://2aogf3g1o828"]
+
+[sub_resource type="Gradient" id="Gradient_i536b"]
+offsets = PackedFloat32Array(0, 0.464286)
+colors = PackedColorArray(0, 0, 0, 1, 0.866873, 0.436592, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gwwbq"]
+gradient = SubResource("Gradient_i536b")
+
+[node name="Qix" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.98023e-08, 1.40308)
+rotation = 0.785398
+scale = Vector2(0.186549, 0.193126)
+texture = SubResource("GradientTexture2D_gwwbq")

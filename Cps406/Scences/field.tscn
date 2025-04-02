@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw1d4hlwpwk5"]
+
+[sub_resource type="Gradient" id="Gradient_6a2c4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.498039, 0.909804, 0.313726, 0.760784)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uivxt"]
+gradient = SubResource("Gradient_6a2c4")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6au4t"]
+distance = -33.4506
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s5ns5"]
+distance = -37.008
+
+[node name="Field" type="Node2D"]
+position = Vector2(-2, -5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 1)
+scale = Vector2(3.02637, 2.92969)
+texture = SubResource("GradientTexture2D_uivxt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(0.330429, 1.70667)
+shape = SubResource("WorldBoundaryShape2D_6au4t")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(0, -1.36533)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_6au4t")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(1.98257, -5.32907e-15)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_s5ns5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(-1.98257, 0.341333)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_s5ns5")

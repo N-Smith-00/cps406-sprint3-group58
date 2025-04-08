@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://2aogf3g1o828"]
+[gd_scene load_steps=6 format=3 uid="uid://2aogf3g1o828"]
+
+[ext_resource type="Script" path="res://Scripts/qix.gd" id="1_j2h6g"]
+[ext_resource type="PackedScene" uid="uid://6h4tckxsk6lm" path="res://Scences/kill_zone.tscn" id="1_tmpp5"]
 
 [sub_resource type="Gradient" id="Gradient_i536b"]
 offsets = PackedFloat32Array(0, 0.464286)
@@ -7,10 +10,21 @@ colors = PackedColorArray(0, 0, 0, 1, 0.866873, 0.436592, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gwwbq"]
 gradient = SubResource("Gradient_i536b")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qc0h"]
+size = Vector2(11.3137, 11.3137)
+
 [node name="Qix" type="Node2D"]
+script = ExtResource("1_j2h6g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.98023e-08, 1.40308)
+position = Vector2(2.98023e-08, 0)
 rotation = 0.785398
-scale = Vector2(0.186549, 0.193126)
+scale = Vector2(0.18, 0.18)
 texture = SubResource("GradientTexture2D_gwwbq")
+
+[node name="KillZone" parent="." instance=ExtResource("1_tmpp5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(0, 1.93715e-07)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_4qc0h")

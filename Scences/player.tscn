@@ -3,26 +3,24 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_hama4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyxg2"]
-size = Vector2(13.435, 12.0208)
+size = Vector2(11.3137, 11.3137)
 
-[sub_resource type="Gradient" id="Gradient_d61un"]
-offsets = PackedFloat32Array(0, 0.00324675, 0.012987, 0.996753, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.780025, 0, 0.0595112, 1, 0.135268, 0, 0.00746375, 1, 0, 0, 1, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_2s23l"]
+colors = PackedColorArray(0, 0, 0, 1, 0.137255, 0.0745098, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8hhye"]
-gradient = SubResource("Gradient_d61un")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mossj"]
+gradient = SubResource("Gradient_2s23l")
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_hama4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.76837e-07, -1.19209e-07)
+position = Vector2(-5.96046e-08, 2.98023e-08)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_cyxg2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.38419e-07, 1.49012e-08)
 rotation = 0.785398
-scale = Vector2(0.0524769, 12.2585)
-texture = SubResource("GradientTexture1D_8hhye")
+scale = Vector2(0.18, 0.18)
+texture = SubResource("GradientTexture2D_mossj")

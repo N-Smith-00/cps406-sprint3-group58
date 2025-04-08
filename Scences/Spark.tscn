@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwm1swxwto6co"]
+[gd_scene load_steps=4 format=3 uid="uid://cwm1swxwto6co"]
 
 [ext_resource type="Script" path="res://Scripts/spark.gd" id="1_4o2ly"]
 
@@ -9,9 +9,6 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 0.203922, 0.196078, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wxp1d"]
 gradient = SubResource("Gradient_b5t8t")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fih7"]
-size = Vector2(63.5463, 65.9668)
-
 [node name="Spark" type="Node2D"]
 position = Vector2(20, 0)
 script = ExtResource("1_4o2ly")
@@ -19,14 +16,24 @@ script = ExtResource("1_4o2ly")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-20, -9.38773e-07)
 rotation = 0.785398
-scale = Vector2(0.200294, 0.192944)
+scale = Vector2(0.18, 0.18)
 texture = SubResource("GradientTexture2D_wxp1d")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2(-20, 0)
+target_position = Vector2(9, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-position = Vector2(2.94596e-06, 3.05816e-06)
-shape = SubResource("RectangleShape2D_7fih7")
+[node name="RayDown" type="RayCast2D" parent="."]
+position = Vector2(-20, 0)
+rotation = 1.5708
+target_position = Vector2(9, -3.93403e-07)
 
-[node name="RayCast2D" type="RayCast2D" parent="Sprite2D/Area2D"]
-target_position = Vector2(17.6518, -18.3241)
+[node name="RayLeft" type="RayCast2D" parent="."]
+position = Vector2(-20, 0)
+rotation = 3.14159
+target_position = Vector2(9, -7.86805e-07)
+
+[node name="RayUp" type="RayCast2D" parent="."]
+position = Vector2(-20, 0)
+rotation = -1.5708
+target_position = Vector2(9, 3.93403e-07)

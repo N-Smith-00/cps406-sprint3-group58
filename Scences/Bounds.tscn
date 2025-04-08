@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cdjhxpa3rsstl"]
+
+[node name="Bounds" type="Line2D"]
+points = PackedVector2Array(-95, -93, -95, 95, 99, 95, 99, -93)
+closed = true
+width = 1.0
+default_color = Color(0, 0, 0, 1)

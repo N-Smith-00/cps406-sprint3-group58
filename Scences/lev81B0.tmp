@@ -11,14 +11,14 @@
 position = Vector2(1, 0)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_4jior")]
-position = Vector2(-94, 95)
+position = Vector2(-94, 96)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(8, 1)
 zoom = Vector2(3, 3)
 
 [node name="Qix" parent="." instance=ExtResource("4_6hr65")]
-position = Vector2(-52, 39)
+position = Vector2(5, -43)
 
 [node name="Spark" parent="." instance=ExtResource("3_pn4a6")]
-position = Vector2(91, 95)
+position = Vector2(65, 0)

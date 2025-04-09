@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://3w56nlmfo30p"]
+
+[ext_resource type="Script" path="res://Scripts/spark.gd" id="1_iiobq"]
+
+[sub_resource type="Gradient" id="Gradient_rhogj"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.0862745, 0.0627451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ijfei"]
+gradient = SubResource("Gradient_rhogj")
+fill_to = Vector2(0.778261, 0.0304348)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnsw8"]
+size = Vector2(63.6396, 63.6396)
+
+[node name="Sparx" type="CharacterBody2D"]
+script = ExtResource("1_iiobq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(0.18, 0.18)
+texture = SubResource("GradientTexture2D_ijfei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9.53674e-07)
+rotation = 0.785398
+scale = Vector2(0.18, 0.18)
+shape = SubResource("RectangleShape2D_pnsw8")

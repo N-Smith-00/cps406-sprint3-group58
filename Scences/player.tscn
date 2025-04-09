@@ -16,7 +16,7 @@ motion_mode = 1
 script = ExtResource("1_hama4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.96046e-08, 2.98023e-08)
+position = Vector2(1.28909e-06, -1.3189e-06)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_cyxg2")
 

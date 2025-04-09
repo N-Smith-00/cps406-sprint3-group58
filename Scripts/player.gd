@@ -22,8 +22,9 @@ func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("Left","Right","Up","Down")
 	
 	if input_dir == Vector2.ZERO:
-		velocity = Vector2.ZERO
-		return
+		input_dir = ldir
+	else:
+		ldir = input_dir
 		
 	var move_attempt = global_position + input_dir * SPEED * delta
 	

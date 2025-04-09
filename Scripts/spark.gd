@@ -1,19 +1,33 @@
-extends Node2D
+extends CharacterBody2D
 
-const SPEED = 120
-var dirx = 1
-var diry = 0
+@export var line: Line2D
+const SPEED = 100
+@export var clockwise: bool = true
+@onready var colider: CollisionShape2D = $CollisionShape2D
 
-@onready var ray_right: RayCast2D = $RayRight
-@onready var ray_down: RayCast2D = $RayDown
-@onready var ray_left: RayCast2D = $RayLeft
-@onready var ray_up: RayCast2D = $RayUp
+var current_index := 0
+var progress = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if ray_right.is_colliding() and ray_down.is_colliding():
-		dirx = -1
-	if ray_left.is_colliding() and ray_down.is_colliding():
-		dirx = 1
-	position.x += SPEED * delta * dirx
-	position.y += SPEED * delta * diry
+func _physics_process(delta: float) -> void:
+	var points = line.points
+	
+	var a = line.to_global(points[current_index])
+	var b = line.to_global(points[(current_index+1) % points.size()])
+	var segment = (b - a)
+	var length = segment.length()
+	
+	var dist = SPEED * delta
+	var delta_prog = dist/length
+	
+	if progress + delta_prog < 1.0:
+		progress += delta_prog
+		global_position = a.lerp(b, progress) if clockwise else b.lerp(a, progress)
+	else:
+		dist -= (1.0 - progress) * length
+		progress = 0.0
+		current_index = (current_index + (1 if clockwise else -1) + points.size()) % points.size()
+		
+		
+func change_direction():
+	clockwise = not clockwise

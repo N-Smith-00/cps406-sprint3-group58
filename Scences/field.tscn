@@ -22,6 +22,8 @@ scale = Vector2(3.02637, 2.92969)
 texture = SubResource("GradientTexture2D_uivxt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
 position = Vector2(0.330429, 1.70667)

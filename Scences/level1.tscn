@@ -14,20 +14,22 @@ position = Vector2(1, 0)
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("line") instance=ExtResource("2_4jior")]
 z_index = 1
 position = Vector2(-94, 0)
+collision_layer = 3
+collision_mask = 3
 line = NodePath("../Bounds")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(8, 1)
 zoom = Vector2(3, 3)
 
-[node name="Qix" parent="." instance=ExtResource("4_6hr65")]
+[node name="Qix" parent="." groups=["enemy"] instance=ExtResource("4_6hr65")]
 z_index = 1
 position = Vector2(-52, 39)
 
-[node name="Sparx" parent="." node_paths=PackedStringArray("line") instance=ExtResource("5_phoup")]
-z_index = 1
-position = Vector2(-94, 23)
-line = NodePath("../Bounds")
-
 [node name="Bounds" parent="." instance=ExtResource("5_thxus")]
 position = Vector2(1, 0)
+
+[node name="Sparx" parent="." node_paths=PackedStringArray("line") instance=ExtResource("5_phoup")]
+position = Vector2(-94, -51)
+line = NodePath("../Bounds")
+clockwise = false

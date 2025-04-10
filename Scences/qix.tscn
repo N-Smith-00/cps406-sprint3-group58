@@ -23,6 +23,8 @@ scale = Vector2(0.18, 0.18)
 texture = SubResource("GradientTexture2D_gwwbq")
 
 [node name="KillZone" parent="." instance=ExtResource("1_tmpp5")]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(0, 1.93715e-07)

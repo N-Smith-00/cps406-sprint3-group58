@@ -26,8 +26,3 @@ texture = SubResource("GradientTexture2D_mossj")
 position = Vector2(1.28909e-06, -1.3189e-06)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_cyxg2")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(1.28909e-06, -1.3189e-06)
-rotation = 0.785398
-shape = SubResource("RectangleShape2D_cyxg2")

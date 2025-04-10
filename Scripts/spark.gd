@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		
 func change_direction():
 	clockwise = not clockwise
-	progress = 1.0-progress
+	progress = 1.0 - progress
 	timer.start(2)
 	
 func _on_body_entered(body):
@@ -48,7 +48,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		#progress = 1.0-progress
 		change_direction()
 		
-
 
 func _on_movement_timer_timeout() -> void:
 	movement_timer.wait_time = randf_range(4,7)

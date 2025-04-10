@@ -17,8 +17,7 @@ distance = -37.008
 position = Vector2(-2, -5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 1)
-scale = Vector2(3.02637, 2.92969)
+scale = Vector2(3, 3)
 texture = SubResource("GradientTexture2D_uivxt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]

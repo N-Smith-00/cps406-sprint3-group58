@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var ldir = Vector2.ZERO
 var push = false
+signal pushing
 
 @export var line: Line2D
 
@@ -40,9 +41,10 @@ func _physics_process(delta: float) -> void:
 			if dist < min_dist:
 				min_dist = dist
 				best_proj = proj
-		print_debug(best_proj)
+		#print_debug(best_proj)
 		global_position = best_proj
 	else:
+		emit_signal("pushing")
 		if abs(move_attempt.x) > 96 or abs(move_attempt.y) > 96:
 			push = false
 			return 
@@ -50,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		# push logic needs to go here
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("Push") and not push:
 		push = true
 		var origin = Vector2(-global_position)
 		var orthog = Vector2.ZERO

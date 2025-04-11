@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_character_body_2d_pushing() -> void:
-	pass # Replace with function body.
+	pass

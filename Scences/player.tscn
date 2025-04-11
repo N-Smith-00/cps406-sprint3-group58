@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp5uc1paw4bhy"]
+[gd_scene load_steps=6 format=3 uid="uid://cp5uc1paw4bhy"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_hama4"]
+[ext_resource type="PackedScene" uid="uid://vri1ek76lgqe" path="res://Scences/trail.tscn" id="2_vahif"]
 
 [sub_resource type="Gradient" id="Gradient_2s23l"]
 colors = PackedColorArray(0, 0, 0, 1, 0.137255, 0.0745098, 1, 1)
@@ -31,3 +32,7 @@ shape = SubResource("RectangleShape2D_cyxg2")
 position = Vector2(1.28909e-06, -1.3189e-06)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_cyxg2")
+
+[node name="Trail" parent="." instance=ExtResource("2_vahif")]
+top_level = true
+default_color = Color(0.87451, 0, 0, 1)

@@ -30,6 +30,7 @@ position = Vector2(5, 46)
 z_index = 1
 position = Vector2(-94, 23)
 line = NodePath("../Bounds")
+current_index = 0
 
 [node name="Bounds" parent="." instance=ExtResource("5_thxus")]
 position = Vector2(1, 0)

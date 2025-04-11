@@ -7,6 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var ldir = Vector2.ZERO
 var push = false
 signal pushing
+var cur_index = 0
 
 @export var line: Line2D
 
@@ -39,9 +40,9 @@ func _physics_process(delta: float) -> void:
 			var dist = move_attempt.distance_squared_to(proj)
 		
 			if dist < min_dist:
+				cur_index = i
 				min_dist = dist
 				best_proj = proj
-		#print_debug(best_proj)
 		global_position = best_proj
 	else:
 		emit_signal("pushing")
@@ -58,13 +59,6 @@ func _process(delta: float) -> void:
 		var orthog = Vector2.ZERO
 		if ldir != Vector2.ZERO:
 			orthog = Vector2(ldir.y, ldir.x)
-			# vector orthogonal to current direction, towards inside of field
-			
-		else:
-			if abs(global_position.x) == 96:
-				orthog = Vector2(1, 0)
-			else:
-				orthog = Vector2(0, 1)
 		ldir = origin.project(orthog).normalized()
 	
 func get_closest_point_on_segment(p: Vector2, a: Vector2, b: Vector2) -> Vector2:

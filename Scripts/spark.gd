@@ -7,7 +7,7 @@ const SPEED = 90
 @onready var timer: Timer = $Timer
 @onready var movement_timer: Timer = $"Movement Timer"
 
-var current_index := 0
+@export var current_index := 0
 var progress = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

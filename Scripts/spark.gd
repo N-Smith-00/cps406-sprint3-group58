@@ -1,10 +1,11 @@
 extends Node2D
 
 @export var line: Line2D
-const SPEED = 80
+const SPEED = 90
 @export var clockwise: bool = true
 @onready var colider: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
+@onready var movement_timer: Timer = $"Movement Timer"
 
 @export var current_index := 0
 var progress = 0.0
@@ -32,13 +33,23 @@ func _physics_process(delta: float) -> void:
 		
 func change_direction():
 	clockwise = not clockwise
+	progress = 1.0 - progress
+	timer.start(2)
 	
 func _on_body_entered(body):
-	print_debug("COL")
+	pass
+	#print_debug("COL")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if timer.is_stopped():
+		movement_timer.start()
 		print_debug("COL")
-		clockwise = not clockwise
-		progress = 1.0-progress
-		timer.start(1)
+		#clockwise = not clockwise
+		#progress = 1.0-progress
+		change_direction()
+		
+
+func _on_movement_timer_timeout() -> void:
+	movement_timer.wait_time = randf_range(4,7)
+	if randi_range(0,1) == 0:
+		change_direction()

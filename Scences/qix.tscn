@@ -1,32 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://2aogf3g1o828"]
+[gd_scene load_steps=7 format=3 uid="uid://2aogf3g1o828"]
 
-[ext_resource type="Script" path="res://Scripts/qix.gd" id="1_j2h6g"]
-[ext_resource type="PackedScene" uid="uid://6h4tckxsk6lm" path="res://Scences/kill_zone.tscn" id="1_tmpp5"]
+[ext_resource type="Script" path="res://Scripts/qix.gd" id="1_4yt4y"]
+[ext_resource type="PackedScene" uid="uid://6h4tckxsk6lm" path="res://Scences/kill_zone.tscn" id="2_y1fhj"]
 
-[sub_resource type="Gradient" id="Gradient_i536b"]
-offsets = PackedFloat32Array(0, 0.464286)
-colors = PackedColorArray(0, 0, 0, 1, 0.866873, 0.436592, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gwwbq"]
-gradient = SubResource("Gradient_i536b")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qc0h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3otv2"]
 size = Vector2(11.3137, 11.3137)
 
-[node name="Qix" type="Node2D"]
-script = ExtResource("1_j2h6g")
+[sub_resource type="Gradient" id="Gradient_04or6"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.615686, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.98023e-08, 0)
-rotation = 0.785398
-scale = Vector2(0.18, 0.18)
-texture = SubResource("GradientTexture2D_gwwbq")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k8cfj"]
+gradient = SubResource("Gradient_04or6")
 
-[node name="KillZone" parent="." instance=ExtResource("1_tmpp5")]
-collision_layer = 2
-collision_mask = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvksn"]
+size = Vector2(11.3137, 11.3137)
+
+[node name="qix" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_4yt4y")
+
+[node name="KillZone" parent="." instance=ExtResource("2_y1fhj")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(0, 1.93715e-07)
 rotation = 0.785398
-shape = SubResource("RectangleShape2D_4qc0h")
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3otv2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(0.18, 0.18)
+texture = SubResource("GradientTexture2D_k8cfj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-9, 0)
+
+[node name="RayDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 9)
+
+[node name="RayRight" type="RayCast2D" parent="."]
+target_position = Vector2(9, 0)
+
+[node name="RayUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.87562e-08, 0)
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_pvksn")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

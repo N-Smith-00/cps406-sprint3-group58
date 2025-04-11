@@ -6,8 +6,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("you died")
 		Engine.time_scale = 0.5
-		body.motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
-		body.get_node("CollisionShape2D").queue_free()
 		timer.start()
 
 func _on_timer_timeout() -> void:

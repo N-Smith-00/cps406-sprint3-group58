@@ -36,3 +36,5 @@ shape = SubResource("RectangleShape2D_cyxg2")
 [node name="Trail" parent="." instance=ExtResource("2_vahif")]
 top_level = true
 default_color = Color(0.87451, 0, 0, 1)
+
+[connection signal="push_end" from="Trail" to="." method="_on_trail_push_end"]

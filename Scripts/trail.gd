@@ -3,7 +3,8 @@ extends Line2D
 var queue : Array
 @onready var area_2d: Area2D = $Area2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
-const COLLISION_SIZE = Vector2(4, 4)
+const COLLISION_SIZE = Vector2(1, 4)
+signal push_end(queue)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

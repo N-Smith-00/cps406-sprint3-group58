@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var ldir = Vector2.ZERO
 var push = false
-signal pushing
+signal p_end(queue)
 var cur_index = 0
 
 @export var line: Line2D
@@ -45,7 +45,6 @@ func _physics_process(delta: float) -> void:
 				best_proj = proj
 		global_position = best_proj
 	else:
-		emit_signal("pushing")
 		if abs(move_attempt.x) > 96 or abs(move_attempt.y) > 96:
 			push = false
 			return 
@@ -66,3 +65,8 @@ func get_closest_point_on_segment(p: Vector2, a: Vector2, b: Vector2) -> Vector2
 	var t = ((p - a).dot(ab)) / ab.length_squared()
 	t = clamp(t, 0.0, 1.0)
 	return a + ab * t
+
+
+func _on_trail_push_end(queue: Variant) -> void:
+	print("finished a push")
+	emit_signal("p_end(queue)")

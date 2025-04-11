@@ -8,6 +8,7 @@ var ldir = Vector2.ZERO
 var push = false
 signal pushing
 var cur_index = 0
+var push_info := ["", -1, Vector2.ZERO, []]
 
 @export var line: Line2D
 
@@ -19,6 +20,9 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Left","Right","Up","Down")
+	
+	if push && input_dir != ldir:
+		push_info[3].append(position)
 	
 	if input_dir == Vector2.ZERO:
 		input_dir = ldir
@@ -48,9 +52,19 @@ func _physics_process(delta: float) -> void:
 		emit_signal("pushing")
 		if abs(move_attempt.x) > 96 or abs(move_attempt.y) > 96:
 			push = false
+			var dir = push_info[0]
+			var i = push_info[1]
+			var o = push_info[2]
+			if dir == "y":
+				if i == 3:
+					if o.x < position.x:
+						line.set_point_position(i, position)
+						for v in push_info[3].slice(push_info[3].size(), 0, -1):
+							line.add_point(v)
 			return 
 		global_position += input_dir * SPEED * delta
-		# push logic needs to go here
+		
+		
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Push") and not push:
@@ -60,6 +74,13 @@ func _process(delta: float) -> void:
 		if ldir != Vector2.ZERO:
 			orthog = Vector2(ldir.y, ldir.x)
 		ldir = origin.project(orthog).normalized()
+		
+		# if push goes in the y direction
+		if orthog.normalized() in [Vector2(0, 1), Vector2(0, -1)]:
+			push_info = ["y", cur_index, position, []]
+		else:
+			push_info = ["x", cur_index, position, []]
+		
 	
 func get_closest_point_on_segment(p: Vector2, a: Vector2, b: Vector2) -> Vector2:
 	var ab = b - a

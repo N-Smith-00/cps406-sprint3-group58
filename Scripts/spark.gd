@@ -1,12 +1,12 @@
 extends Node2D
 
 @export var line: Line2D
-const SPEED = 100
+const SPEED = 80
 @export var clockwise: bool = true
 @onready var colider: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
 
-var current_index := 0
+@export var current_index := 0
 var progress = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

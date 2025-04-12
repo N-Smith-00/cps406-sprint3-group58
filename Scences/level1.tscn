@@ -15,7 +15,7 @@ position = Vector2(1, 0)
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("line") instance=ExtResource("2_4jior")]
 z_index = 1
-position = Vector2(-94, 0)
+position = Vector2(7, -96)
 line = NodePath("../Bounds")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -28,7 +28,7 @@ position = Vector2(5, 46)
 
 [node name="Sparx" parent="." node_paths=PackedStringArray("line") instance=ExtResource("5_phoup")]
 z_index = 1
-position = Vector2(-94, 23)
+position = Vector2(-95, 23)
 line = NodePath("../Bounds")
 
 [node name="Bounds" parent="." instance=ExtResource("5_thxus")]

@@ -6,11 +6,11 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var ldir = Vector2.ZERO
 var push = false
-signal pushing
 var cur_index = 0
-var push_info := ["", -1, Vector2.ZERO, []]
+var new_border: Array = []
 
 @export var line: Line2D
+signal p_end(queue)
 
 func start_push():
 	pass
@@ -20,9 +20,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Left","Right","Up","Down")
-	
-	if push && input_dir != ldir:
-		push_info[3].append(position)
+
 	
 	if input_dir == Vector2.ZERO:
 		input_dir = ldir
@@ -49,26 +47,18 @@ func _physics_process(delta: float) -> void:
 				best_proj = proj
 		global_position = best_proj
 	else:
-		emit_signal("pushing")
 		if abs(move_attempt.x) > 96 or abs(move_attempt.y) > 96:
 			push = false
-			var dir = push_info[0]
-			var i = push_info[1]
-			var o = push_info[2]
-			if dir == "y":
-				if i == 3:
-					if o.x < position.x:
-						line.set_point_position(i, position)
-						for v in push_info[3].slice(push_info[3].size(), 0, -1):
-							line.add_point(v)
+			p_end.emit(new_border)
 			return 
 		global_position += input_dir * SPEED * delta
-		
-		
+		# push logic needs to go here
+		new_border.append(position)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Push") and not push:
 		push = true
+		new_border.append(position)
 		var origin = Vector2(-global_position)
 		var orthog = Vector2.ZERO
 		if ldir != Vector2.ZERO:

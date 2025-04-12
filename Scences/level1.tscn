@@ -34,4 +34,4 @@ line = NodePath("../Bounds")
 [node name="Bounds" parent="." instance=ExtResource("5_thxus")]
 position = Vector2(1, 0)
 
-[connection signal="pushing" from="CharacterBody2D" to="." method="_on_character_body_2d_pushing"]
+[connection signal="p_end" from="CharacterBody2D" to="." method="_on_character_body_2d_p_end"]

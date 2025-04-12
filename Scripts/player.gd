@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Left","Right","Up","Down")
-
+	
 	
 	if input_dir == Vector2.ZERO:
 		input_dir = ldir
@@ -64,13 +64,6 @@ func _process(delta: float) -> void:
 		if ldir != Vector2.ZERO:
 			orthog = Vector2(ldir.y, ldir.x)
 		ldir = origin.project(orthog).normalized()
-		
-		# if push goes in the y direction
-		if orthog.normalized() in [Vector2(0, 1), Vector2(0, -1)]:
-			push_info = ["y", cur_index, position, []]
-		else:
-			push_info = ["x", cur_index, position, []]
-		
 	
 func get_closest_point_on_segment(p: Vector2, a: Vector2, b: Vector2) -> Vector2:
 	var ab = b - a

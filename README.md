@@ -58,8 +58,8 @@
  - 
  2. Build Information:
     - Built using: Godot Engine v4.3
-    - Platform: [e.g., Windows, Mac, Linux]
-    - To Run: Open `main.tscn` in Godot or run the exported binary if provided.
+    - Platform: [e.g., Windows, Mac, Linux] easily can be added but this export is just on Windows
+    - To Run: Open `cps406.exe` and the game will start.
  
  ---------------------------------------
  Known Issues / Limitations
